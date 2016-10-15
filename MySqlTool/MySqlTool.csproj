@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{3FAC4B41-8CD6-4BE0-8839-86DCBA9BC9E7}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <OutputType>WinExe</OutputType>
+    <AssemblyName>MySqlTool</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>MySqlTool</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.9.9\lib\net40\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Drawing" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class\About.cs" />
+    <Compile Include="Class\Config.cs" />
+    <Compile Include="Class\Core.cs" />
+    <Compile Include="Class\Data.cs" />
+    <Compile Include="Class\DBHost.cs" />
+    <Compile Include="Class\DBInfo.cs" />
+    <Compile Include="Class\Helper.cs" />
+    <Compile Include="Class\Progress.cs" />
+    <Compile Include="Class\ResultMessage.cs" />
+    <Compile Include="Class\SerializeHelper.cs" />
+    <Compile Include="Class\Speed.cs" />
+    <Compile Include="Class\SpeedInfo.cs" />
+    <Compile Include="Class\Tree.cs" />
+    <Compile Include="Properties\Settings.cs" />
+    <Compile Include="frm\frmBack.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm\frmBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm\frmCreate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm\frmLoading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm\frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm\frmRestore.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm\frmSetTag.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm\frmUpDate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="frm\frmLoading.resx">
+      <DependentUpon>frmLoading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm\frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="frm\frmBase.resx">
+      <DependentUpon>frmBase.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MySqlBackUp\MySqlBackup.csproj">
+      <Project>{c9ddfd1e-90e2-4400-a409-89036f902e17}</Project>
+      <Name>MySqlBackup</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MySqlBll\MySqlBll.csproj">
+      <Project>{e6e67b06-8f94-41b6-adbe-dc94715c85be}</Project>
+      <Name>MySqlBll</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="host.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
