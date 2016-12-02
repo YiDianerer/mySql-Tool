@@ -26,6 +26,7 @@ namespace MySqlBll
 		MYSQL_timestamp,
 		MYSQL_tinyint,
 		MYSQL_varchar,
-		MYSQL_year
+		MYSQL_year,
+        MYSQL_Bit
 	}
 }

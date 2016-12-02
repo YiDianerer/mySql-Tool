@@ -208,187 +208,27 @@ namespace MySqlBll
                 {
                     _dtTypes = new Dictionary<string, int>(23)
                     {
-                        {
-                            "bigint",
-                            0
-                        },
-                        {
-                            "blob",
-                            1
-                        },
-                        {
-                            "mediumblob",
-                            2
-                        },
-                        {
-                            "tinyblob",
-                            3
-                        },
-                        {
-                            "char",
-                            4
-                        },
-                        {
-                            "datetime",
-                            5
-                        },
-                        {
-                            "decimal",
-                            6
-                        },
-                        {
-                            "double",
-                            7
-                        },
-                        {
-                            "enum",
-                            8
-                        },
-                        {
-                            "float",
-                            9
-                        },
-                        {
-                            "int",
-                            10
-                        },
-                        {
-                            "longblob",
-                            11
-                        },
-                        {
-                            "longtext",
-                            12
-                        },
-                        {
-                            "mediumint",
-                            13
-                        },
-                        {
-                            "mediumtext",
-                            14
-                        },
-                        {
-                            "set",
-                            15
-                        },
-                        {
-                            "smallint",
-                            16
-                        },
-                        {
-                            "text",
-                            17
-                        },
-                        {
-                            "time",
-                            18
-                        },
-                        {
-                            "timestamp",
-                            19
-                        },
-                        {
-                            "tinyint",
-                            20
-                        },
-                        {
-                            "varchar",
-                            21
-                        },
-                        {
-                            "year",
-                            22
-                        },
-                        {
-                            "date",
-                            5
-                        }
+                        {  "bigint", 0 },  {  "blob",   1 },  { "mediumblob", 2 }, { "tinyblob", 3 },
+                        { "char", 4  },  { "datetime",  5 },  { "decimal", 6 },  { "double", 7 },
+                        { "enum", 8 }, { "float",  9 }, { "int",  10 },  { "longblob", 11  },
+                        { "longtext", 12  }, {  "mediumint", 13 },  {  "mediumtext", 14 },
+                        { "set",  15 }, { "smallint",  16 },  { "text",  17  }, { "time", 18 },
+                        { "timestamp", 19 }, { "tinyint", 20 },  { "varchar", 21 }, { "year",  22  }, { "bit",  23 }, { "date", 5 }
                     };
                 }
                 int num;
                 if (_dtTypes.TryGetValue(value, out num))
                 {
-                    DATA_TYPE result;
-                    switch (num)
-                    {
-                        case 0:
-                            result = DATA_TYPE.MYSQL_bigint;
-                            break;
-                        case 1:
-                            result = DATA_TYPE.MYSQL_blob;
-                            break;
-                        case 2:
-                            result = DATA_TYPE.MYSQL_mediumblob;
-                            break;
-                        case 3:
-                            result = DATA_TYPE.MYSQL_tinyblob;
-                            break;
-                        case 4:
-                            result = DATA_TYPE.MYSQL_char;
-                            break;
-                        case 5:
-                            result = DATA_TYPE.MYSQL_datetime;
-                            break;
-                        case 6:
-                            result = DATA_TYPE.MYSQL_decimal;
-                            break;
-                        case 7:
-                            result = DATA_TYPE.MYSQL_double;
-                            break;
-                        case 8:
-                            result = DATA_TYPE.MYSQL_enum;
-                            break;
-                        case 9:
-                            result = DATA_TYPE.MYSQL_float;
-                            break;
-                        case 10:
-                            result = DATA_TYPE.MYSQL_int;
-                            break;
-                        case 11:
-                            result = DATA_TYPE.MYSQL_longblob;
-                            break;
-                        case 12:
-                            result = DATA_TYPE.MYSQL_longtext;
-                            break;
-                        case 13:
-                            result = DATA_TYPE.MYSQL_mediumint;
-                            break;
-                        case 14:
-                            result = DATA_TYPE.MYSQL_mediumtext;
-                            break;
-                        case 15:
-                            result = DATA_TYPE.MYSQL_set;
-                            break;
-                        case 16:
-                            result = DATA_TYPE.MYSQL_smallint;
-                            break;
-                        case 17:
-                            result = DATA_TYPE.MYSQL_text;
-                            break;
-                        case 18:
-                            result = DATA_TYPE.MYSQL_time;
-                            break;
-                        case 19:
-                            result = DATA_TYPE.MYSQL_timestamp;
-                            break;
-                        case 20:
-                            result = DATA_TYPE.MYSQL_tinyint;
-                            break;
-                        case 21:
-                            result = DATA_TYPE.MYSQL_varchar;
-                            break;
-                        case 22:
-                            result = DATA_TYPE.MYSQL_year;
-                            break;
-                        default:
-                            goto IL_227;
-                    }
+                    DATA_TYPE result = (DATA_TYPE)num;
+                    if (!Enum.IsDefined(typeof(DATA_TYPE), result))
+                        throw new Exception("类型错误");
                     return result;
                 }
+                else
+                    throw new Exception("类型错误");
             }
-            IL_227:
-            throw new Exception("类型错误");
+            else
+                throw new Exception("类型错误");
         }
 
         public static COLUMN_KEY GetCOLUMN_KEY(string value)
