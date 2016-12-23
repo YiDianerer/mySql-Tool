@@ -110,17 +110,17 @@ namespace MySqlTool
 			}
 			else
 			{
-				foreach (DBHost current in this.m_List)
-				{
-					foreach (DBInfo current2 in current.DBInfos)
-					{
-						if (current2.DBTag != this.m_Pack.Tag)
-						{
-							MessageBox.Show("有一个数据库标志不正确，不能批量更新，请检查");
-							return;
-						}
-					}
-				}
+				//foreach (DBHost current in this.m_List)
+				//{
+				//	foreach (DBInfo current2 in current.DBInfos)
+				//	{
+				//		if (current2.DBTag != this.m_Pack.Tag)
+				//		{
+				//			MessageBox.Show("有一个数据库标志不正确，不能批量更新，请检查");
+				//			return;
+				//		}
+				//	}
+				//}
 				foreach (DBHost current in this.m_List)
 				{
 					foreach (DBInfo current2 in current.DBInfos)

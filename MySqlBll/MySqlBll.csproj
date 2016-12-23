@@ -41,6 +41,7 @@
     <Compile Include="MySqlBll\Config.cs" />
     <Compile Include="MySqlBll\DATA_TYPE.cs" />
     <Compile Include="MySqlBll\ENGINE.cs" />
+    <Compile Include="MySqlBll\GetDefaultValue.cs" />
     <Compile Include="MySqlBll\INDEX.cs" />
     <Compile Include="MySqlBll\IniFile.cs" />
     <Compile Include="MySqlBll\IS_NULLABLE.cs" />
