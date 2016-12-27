@@ -314,7 +314,8 @@ namespace MySqlBll
             });
             if (col.COLUMN_DEFAULT != DBNull.Value)
             {
-                fields = fields + " DEFAULT " + ((col.COLUMN_DEFAULT.ToString() == "") ? "''" : col.COLUMN_DEFAULT.ToString());
+
+                fields = fields + " DEFAULT " + ((col.COLUMN_DEFAULT.ToString() == "") ? "''" : col.DATA_TYPE.IsChar() ? "'" + col.COLUMN_DEFAULT.ToString() + "'" : col.COLUMN_DEFAULT.ToString());
             }
             if (col.EXTRA != "")
             {
