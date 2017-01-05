@@ -170,7 +170,10 @@ namespace MySqlBll
                     if (updatenull)
                     {
                         string update = "update {0} set {1} = {2} where {1} is null;";
-                        string upvalue = (sourceColumn.COLUMN_DEFAULT == DBNull.Value) ? sourceColumn.DATA_TYPE.GetDefault() : sourceColumn.COLUMN_DEFAULT.ToString();
+                        string upvalue = (sourceColumn.COLUMN_DEFAULT == DBNull.Value) ?
+                            sourceColumn.DATA_TYPE.GetDefault() :
+                            sourceColumn.DATA_TYPE.IsChar() ? "'" + sourceColumn.COLUMN_DEFAULT.ToString() + "'" :
+                            sourceColumn.COLUMN_DEFAULT.ToString();
                         update = string.Format(update, sourceColumn.TABLE_NAME, sourceColumn.COLUMN_NAME, upvalue);
                         extendSqls.Add(update);
                     }
