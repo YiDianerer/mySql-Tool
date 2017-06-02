@@ -322,7 +322,7 @@ namespace MySqlBll
             }
             if (col.EXTRA != "")
             {
-                fields += " AUTO_INCREMENT";
+                fields += " " + col.EXTRA.ToUpper();
             }
             return fields;
         }

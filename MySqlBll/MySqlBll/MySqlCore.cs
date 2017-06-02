@@ -13,7 +13,7 @@ namespace MySqlBll
         {
             TableMySQL sqltable = new TableMySQL(conn);
             SCHEMA schema = new SCHEMA(dbname);
-            DataTable dt = sqltable.Get("select * from information_schema.tables where Table_SCHEMA ='" + dbname + "'");
+            DataTable dt = sqltable.Get("select * from information_schema.tables where TABLE_TYPE='BASE TABLE' AND Table_SCHEMA ='" + dbname + "'");
             foreach (DataRow dr in dt.Rows)
             {
                 TABLE table = new TABLE();
@@ -117,6 +117,16 @@ namespace MySqlBll
                 sb.Append(body);
                 list.Add(sb.ToString());
             }
+            #region 视图==========
+            DataTable dtview = sqltable.Get("SELECT * FROM information_schema.VIEWS WHERE TABLE_SCHEMA='" + dbname + "'");
+            foreach (DataRow dr in dtview.Rows)
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.AppendLine("CREATE OR REPLACE VIEW " + dr["TABLE_NAME"] + " AS ");
+                sb.AppendLine("" + dr["VIEW_DEFINITION"].ToString().Replace("`" + dbname + "`.", "") + "");
+                list.Add(sb.ToString());
+            }
+            #endregion
             return list;
         }
 

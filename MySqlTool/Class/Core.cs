@@ -70,7 +70,7 @@ namespace MySqlTool.Class
                 this.SetProgress("更新成功");
                 resultMessage.Result = true;
                 resultMessage.Message = "更新成功";
-            }
+            } 
             catch (Exception ex)
             {
                 this.SetProgress("失败" + ex.Message);
