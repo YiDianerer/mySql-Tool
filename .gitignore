@@ -3,3 +3,10 @@
 ################################################################################
 
 /MySqlTool/obj/x86/Debug
+/MySqlTool/bin/Debug
+/MySqlBll/obj/Debug
+/MySqlBll/bin/Debug
+/MySqlBackUp/obj/Debug
+/MySqlBackUp/bin/Debug
+/.vs/MySqlTool/v15/Server/sqlite3
+/.vs/MySqlTool/v15/.suo
