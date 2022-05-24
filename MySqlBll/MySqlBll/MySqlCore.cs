@@ -44,14 +44,14 @@ namespace MySqlBll
                     column.TABLE_SCHEMA = dbname;
                     column.TABLE_NAME = table.TABLE_NAME;
                     column.COLUMN_NAME = drcol["COLUMN_NAME"].ToString();
-                    column.ORDINAL_POSITION = ((drcol["ORDINAL_POSITION"] == DBNull.Value) ? 0uL : ((ulong)drcol["ORDINAL_POSITION"]));
+                    column.ORDINAL_POSITION = (drcol["ORDINAL_POSITION"] == DBNull.Value) ? 0uL : Convert.ToUInt64(drcol["ORDINAL_POSITION"]);
                     column.COLUMN_DEFAULT = drcol["COLUMN_DEFAULT"];
                     column.IS_NULLABLE = MySqlCore.GetIS_NULLABLE(drcol["IS_NULLABLE"].ToString());
                     column.DATA_TYPE = MySqlCore.GetDATA_TYPE(drcol["DATA_TYPE"].ToString());
-                    column.CHARACTER_MAXIMUM_LENGTH = ((drcol["CHARACTER_MAXIMUM_LENGTH"] == DBNull.Value) ? 0uL : ((ulong)drcol["CHARACTER_MAXIMUM_LENGTH"]));
-                    column.CHARACTER_OCTET_LENGTH = ((drcol["CHARACTER_OCTET_LENGTH"] == DBNull.Value) ? 0uL : ((ulong)drcol["CHARACTER_OCTET_LENGTH"]));
-                    column.NUMERIC_PRECISION = ((drcol["NUMERIC_PRECISION"] == DBNull.Value) ? 0uL : ((ulong)drcol["NUMERIC_PRECISION"]));
-                    column.NUMERIC_SCALE = ((drcol["NUMERIC_SCALE"] == DBNull.Value) ? 0uL : ((ulong)drcol["NUMERIC_SCALE"]));
+                    column.CHARACTER_MAXIMUM_LENGTH = (drcol["CHARACTER_MAXIMUM_LENGTH"] == DBNull.Value) ? 0uL : Convert.ToUInt64(drcol["CHARACTER_MAXIMUM_LENGTH"]);
+                    column.CHARACTER_OCTET_LENGTH = (drcol["CHARACTER_OCTET_LENGTH"] == DBNull.Value) ? 0uL : Convert.ToUInt64(drcol["CHARACTER_OCTET_LENGTH"]);
+                    column.NUMERIC_PRECISION = (drcol["NUMERIC_PRECISION"] == DBNull.Value) ? 0uL : Convert.ToUInt64(drcol["NUMERIC_PRECISION"]);
+                    column.NUMERIC_SCALE = (drcol["NUMERIC_SCALE"] == DBNull.Value) ? 0uL : Convert.ToUInt64(drcol["NUMERIC_SCALE"]);
                     column.COLUMN_TYPE = ((drcol["COLUMN_TYPE"] == DBNull.Value) ? "" : drcol["COLUMN_TYPE"].ToString());
                     column.COLUMN_KEY = MySqlCore.GetCOLUMN_KEY(drcol["COLUMN_KEY"].ToString());
                     column.COLUMN_COMMENT = drcol["COLUMN_COMMENT"].ToString();
@@ -84,50 +84,7 @@ namespace MySqlBll
                     }
                 }
             }
-            schema.PROCEDURE = GetPROCEDURE(conn, dbname);
             return schema;
-        }
-
-        public static List<string> GetPROCEDURE(string conn, string dbname)
-        {
-            TableMySQL sqltable = new TableMySQL(conn);
-            List<string> list = new List<string>();
-            DataTable dt = sqltable.Get("select type,name,param_list,body,returns  from mysql.proc where db='" + dbname + "'");
-            foreach (DataRow dr in dt.Rows)
-            {
-                string name = dr["name"].ToString();
-                string type = dr["type"].ToString();
-                string returns = Encoding.UTF8.GetString((dr["returns"] == DBNull.Value) ? new byte[0] : ((byte[])dr["returns"]));
-                string paralist = Encoding.UTF8.GetString((dr["param_list"] == DBNull.Value) ? new byte[0] : ((byte[])dr["param_list"]));
-                string body = Encoding.UTF8.GetString((dr["body"] == DBNull.Value) ? new byte[0] : ((byte[])dr["body"]));
-                StringBuilder sb = new StringBuilder();
-                sb.AppendLine("DROP " + type + " IF EXISTS `" + name + "`;");
-                sb.AppendLine(string.Concat(new string[]
-                {
-                            "CREATE  "+type+" `",
-                            name,
-                            "`(",
-                            paralist,
-                            ")"
-                }));
-                if (type.ToLower() == "function")
-                {
-                    sb.AppendLine("RETURNS " + returns);
-                }
-                sb.Append(body);
-                list.Add(sb.ToString());
-            }
-            #region 视图==========
-            DataTable dtview = sqltable.Get("SELECT * FROM information_schema.VIEWS WHERE TABLE_SCHEMA='" + dbname + "'");
-            foreach (DataRow dr in dtview.Rows)
-            {
-                StringBuilder sb = new StringBuilder();
-                sb.AppendLine("CREATE OR REPLACE VIEW " + dr["TABLE_NAME"] + " AS ");
-                sb.AppendLine("" + dr["VIEW_DEFINITION"].ToString().Replace("`" + dbname + "`.", "") + "");
-                list.Add(sb.ToString());
-            }
-            #endregion
-            return list;
         }
 
         private static TABLE_TYPE GetTABLE_TYPE(string value)

@@ -30,12 +30,6 @@ namespace MySqlBll
             set;
         }
 
-        public List<string> PROCEDURE
-        {
-            get;
-            set;
-        }
-
         public SCHEMA(string name)
         {
             this.SCHEMA_NAME = name;

@@ -62,11 +62,6 @@ namespace MySqlTool.Class
                     this.SetProgress(current);
                     tableMySQL.ExecuteNonQuery(current);
                 }
-                foreach (string current in source.PROCEDURE)
-                {
-                    this.SetProgress(current);
-                    tableMySQL.ExecuteNonQuery(current);
-                }
                 this.SetProgress("更新成功");
                 resultMessage.Result = true;
                 resultMessage.Message = "更新成功";
