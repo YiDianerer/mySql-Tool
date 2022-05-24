@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfDBHost>
-  <DBHost Host="192.168.1.10" Port="3306" User="root" Password="111111"/>
-  <DBHost Host="192.168.1.248" Port="3306" User="root" Password="123456"/>
+  <DBHost Host="192.168.1.220" Port="3306" User="root" Password="123456"/>
 </ArrayOfDBHost>

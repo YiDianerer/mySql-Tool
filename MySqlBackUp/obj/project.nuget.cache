@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "dgSpecHash": "F6vcf59O775JGlnMAlS8h9IuFbwtg1TLSSwCpJ4PnY+OfSrd1pIyQv++m2pA7ALJBZsfTyILu9dppuh1E1Vn+g==",
+  "success": true,
+  "projectFilePath": "E:\\work\\TradeBaseSys\\mySql-Tool\\MySqlBackUp\\MySqlBackup.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\xhero\\.nuget\\packages\\bouncycastle\\1.8.9\\bouncycastle.1.8.9.nupkg.sha512",
+    "C:\\Users\\xhero\\.nuget\\packages\\google.protobuf\\3.20.1\\google.protobuf.3.20.1.nupkg.sha512",
+    "C:\\Users\\xhero\\.nuget\\packages\\k4os.compression.lz4\\1.2.16\\k4os.compression.lz4.1.2.16.nupkg.sha512",
+    "C:\\Users\\xhero\\.nuget\\packages\\k4os.compression.lz4.streams\\1.2.16\\k4os.compression.lz4.streams.1.2.16.nupkg.sha512",
+    "C:\\Users\\xhero\\.nuget\\packages\\k4os.hash.xxhash\\1.0.7\\k4os.hash.xxhash.1.0.7.nupkg.sha512",
+    "C:\\Users\\xhero\\.nuget\\packages\\mysql.data\\8.0.29\\mysql.data.8.0.29.nupkg.sha512",
+    "C:\\Users\\xhero\\.nuget\\packages\\mysqlconnector\\2.1.9\\mysqlconnector.2.1.9.nupkg.sha512",
+    "C:\\Users\\xhero\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
+    "C:\\Users\\xhero\\.nuget\\packages\\system.diagnostics.diagnosticsource\\5.0.1\\system.diagnostics.diagnosticsource.5.0.1.nupkg.sha512",
+    "C:\\Users\\xhero\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
+    "C:\\Users\\xhero\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
+    "C:\\Users\\xhero\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\xhero\\.nuget\\packages\\system.threading.tasks.extensions\\4.3.0\\system.threading.tasks.extensions.4.3.0.nupkg.sha512"
+  ],
+  "logs": []
+}
